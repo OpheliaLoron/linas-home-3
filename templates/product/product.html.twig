@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="container">
+    <div class="py-3 d-flex w-100 flex-column justify-content-center align-items-center">
+      <h3>{{ product.name }}</h3>
+      
+      <div>
+        <a href="/" class="btn btn-sm btn-outline-success">Retour à l'accueil</a>
+        <a href="/add_product" class="btn btn-sm btn-outline-primary">Ajouter un produit</a>
+      </div>
+    </div>
+
+    <div class="">
+      <img
+        src="{{ products.photo_1 }}"
+        alt="{{ products.alt_1 }}"
+        class="img-fluid"
+      />
+      <img
+        src="{{ products.photo_2 }}"
+        alt="{{ product.alt_2 }}"
+        class="img-fluid"
+      />
+      <img
+        src="{{ products.photo_3 }}"
+        alt="{{ products.alt_3 }}"
+        class="img-fluid"
+      />
+      <img
+        src="{{ products.photo_4 }}"
+        alt="{{ products.alt_4 }}"
+        class="img-fluid"
+      />
+    
+    </div>
+  </div>
+  
+  
+
+{% endblock %}

@@ -1,0 +1,38 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* NAVBAR */
+.logo{
+    width: 50%;
+}
+/* FIN NAVBAR */
+
+/* MAIN */
+
+.btn-group button{
+    background-color: #92735F;
+}
+
+.btn-group button:hover{
+    background-color: #D7CBBB;
+}
+
+
+/* FIN MAIN */
+
+/* FOOTER */
+
+footer{
+    background-color: #92735F;
+}
+
+/* FIN FOOTER */
