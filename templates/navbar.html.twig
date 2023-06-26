@@ -54,48 +54,68 @@
 </nav> -->
 
 <nav class="nav flex-column container">
-    <div class="d-flex justify-content-between">
-      <div class="col-lg-3">
-        <a href="{{ path('app_home') }}">
-          <img
-            class="logo"
-            src="{{ asset('assets/img/logo/linashome_short.svg') }}"
-          />
-        </a>
-      </div>
-  
-      <div class="col-lg-5">
-        <!-- maj alt bas -->
-        <a href="#" class="nav-link text-dark mt-3"
-          ><i class="bi bi-search position-absolute fs-4"></i>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control"
-              type="search"
-              placeholder="Rechercher..."
-              aria-label="Search"
-            /></form
-        ></a>
-      </div>
-  
-      <div class="col-lg-4 nav-links d-flex justify-content-between">
-        <a href="{{ path('app_wishlist') }}" class="nav-link text-dark d-flex"
-          ><i class="bi bi-heart fs-4"></i><span class="ps-2">Liste d'envie</span></a
-        >
-        <a href="{{ path('app_home') }}" class="nav-link text-dark d-flex"
-          ><i class="bi bi-person fs-2"></i><span class="ps-2">Compte</span></a
-        >
-        <a href="{{ path('app_shopping_cart') }}" class="nav-link text-dark d-flex"
-          ><i class="bi bi-cart2 fs-3"></i><span class="ps-2">Panier</span></a
-        >
-      </div>
+  <div class="d-flex justify-content-between">
+    <div class="col-lg-3 pt-2">
+      <a href="{{ path('app_home') }}">
+        <img
+          class="logo"
+          src="{{ asset('assets/img/logo/linashome_short.svg') }}"
+        />
+      </a>
     </div>
-  
-    <ul class="nav-more d-flex ps-0 fs-5">
-      <li class="active"><a href="#" class="nav-link text-dark">Pièces</a></li>
-      <li><a href="{{ path('app_products') }}" class="nav-link text-dark ms-5">Produits</a></li>
-      <li><a href="#" class="nav-link text-dark ms-5">Contact</a></li>
-      <li><a href="#" class="nav-link text-dark ms-5">About</a></li>
+
+    <div class="col-lg-5">
+      <!-- maj alt bas -->
+      <a href="#" class="nav-link text-dark mt-3"
+        ><i class="bi bi-search position-absolute fs-4"></i>
+        <form class="d-flex" role="search">
+          <input
+            class="form-control"
+            type="search"
+            placeholder="Rechercher..."
+            aria-label="Search"
+          /></form
+      ></a>
+    </div>
+
+    <ul class="col-lg-4 nav-links d-flex justify-content-between pt-4">
+      <li>
+        <a href="{{ path('app_wishlist') }}" class="nav-link text-dark d-flex "
+          ><i class="bi bi-heart fs-4 me-2"></i
+          ><span class="text-nowrap">Liste d'envie</span></a
+        >
+      </li>
+      <li>
+        <a href="{{ path('app_account') }}" class="nav-link text-dark d-flex"
+          ><i class="bi bi-person fs-2 me-2"></i><span>Compte</span></a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ path('app_shopping_cart') }}"
+          class="nav-link text-dark d-flex"
+          ><i class="bi bi-cart2 fs-3 me-2"></i><span>Panier</span></a
+        >
+      </li>
     </ul>
-  </nav>
-  
+  </div>
+
+  <ul class="nav-more d-flex ps-0 fs-5">
+    <li class="active"><a href="#" class="nav-link text-dark">Pièces</a></li>
+    <li>
+      <a href="{{ path('app_products') }}" class="nav-link text-dark ms-5"
+        >Produits</a
+      >
+    </li>
+    <li>
+      <a href="{{ path('app_contact') }}" class="nav-link text-dark ms-5"
+        >Contactez-nous</a
+      >
+    </li>
+    <li>
+      <a href="{{ path('app_about') }}" class="nav-link text-dark ms-5"
+        >À propos</a
+      >
+    </li>
+  </ul>
+</nav>

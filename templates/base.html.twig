@@ -11,7 +11,7 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Hugo 0.111.3" />
-    <title>{% block title %}Vive le numérique ! {% endblock %}</title>
+    <title>{% block title %} Lina's Home {% endblock %}</title>
 
     <!-- Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -118,23 +118,23 @@
       crossorigin="anonymous"
     ></script>
   </body>
+
+  <!-- Javascript Menu défilement -->
   <script>
-    const menuHamburger = document.querySelector(".burger");
+    const menu = document.querySelector(".burger");
     const navLinks = document.querySelector(".nav-more");
     const logo = document.querySelector(".logo");
 
     let isMenuOpen = false;
 
-    menuHamburger.addEventListener("click", () => {
+    menu.addEventListener("click", () => {
       if (isMenuOpen) {
-        navLinks.classList.remove("mobile-menu");
+        navLinks.classList.add("menu");
 
         logo.style.display = "block";
       } else {
-        navLinks.classList.add("mobile-menu");
-        setTimeout(() => {
-          logo.style.display = "none";
-        }, 300); // 500 milliseconds delay
+        navLinks.classList.remove("menu");
+        
       }
 
       isMenuOpen = !isMenuOpen;

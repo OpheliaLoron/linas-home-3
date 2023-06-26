@@ -1,4 +1,4 @@
-*, ::before, ::after {
+*, ::before, ::after, ul {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -14,6 +14,26 @@ img{
 .logo{
     width: 50%;
 }
+
+.nav-link i {
+    top: 30px;
+    right: 560px;
+}
+
+.nav-link form {
+    margin-left: -60px;
+    margin-right: 40px;
+}
+
+/* i.bi-person {
+    margin-bottom: 80px;
+} */
+
+/* .nav .nav-links li {
+    margin: 0 25px;
+} */
+
+
 /* FIN NAVBAR */
 
 /* MAIN */
@@ -27,6 +47,11 @@ img{
 }
 
 
+
+
+
+
+
 /* FIN MAIN */
 
 /* FOOTER */
@@ -34,5 +59,9 @@ img{
 footer{
     background-color: #92735F;
 }
+
+/* footer img{
+    width: 20%;
+} */
 
 /* FIN FOOTER */

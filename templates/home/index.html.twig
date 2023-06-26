@@ -1,5 +1,5 @@
-{% extends 'base.html.twig' %} {% block title %}Lina's Home{% endblock%} {%
-block body %}
+{% extends 'base.html.twig' %} {% block title %}Lina's Home{% endblock%} {%block
+body %}
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
   <symbol id="check2" viewbox="0 0 16 16">
     <path
@@ -93,18 +93,44 @@ block body %}
 <div class="container py-3">
   <!-- 576px XS - > 576px S > 768px M > 992px L > 1200px XL -->
 
+  {%block content %}
+
   <div class="row">
-    <div
-      class="d-flex flex-column justify-content-center align-items-center py-4"
-    >
-      <p class="lead mb-5">
-        <a
-          href="{{ path('app_products') }}"
-          class="btn border border-1 rounded-2 py-2 px-5"
-          >Voir plus</a
-        >
-      </p>
+    {% for product in productsHome %}
+
+    <div class="col-md-4 col-sm-6">
+      <div class="card mb-4 shadow-sm">
+        <a href="{{ path('app_product', { id: product.id }) }}">
+          <img
+            src="{{ asset('assets/img/articles/' ~ product.photo1) }}"
+            alt="{{ product.alt1 }}"
+            class="w-100"
+          />
+        </a>
+
+        <div class="card-body">
+          <h2 class="card-title fs-5">{{ product.name }}</h2>
+          <p class="card-text d-flex flex-column align-items-lg-center">
+            {{ product.description }}
+            <span>{{ product.unitprice }}</span>
+          </p>
+        </div>
+      </div>
     </div>
+
+    {% endfor %}
+  </div>
+  {% endblock %}
+  <div
+    class="d-flex flex-column justify-content-center align-items-center py-4"
+  >
+    <p class="lead mb-5">
+      <a
+        href="{{ path('app_products') }}"
+        class="btn border border-1 rounded-2 py-2 px-5"
+        >Voir plus</a
+      >
+    </p>
   </div>
 </div>
 {% endblock %}

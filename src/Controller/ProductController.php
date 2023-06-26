@@ -11,30 +11,31 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductController extends AbstractController
 {
     private $entityManager;
-    
-    public function __construct(EntityManagerInterface $entityManager){
-        $this -> entityManager = $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
     }
-    
-      /**
+
+    /**
      * @Route("/product/{id}", name="app_product")
      */
     public function product($id): Response
     {
         // dd($id);
-        $product = $this -> entityManager->getRepository(Products::class)->findOneById($id);
+        $product = $this->entityManager->getRepository(Products::class)->findOneById($id);
 
-        if(!$product){
-            return $this ->redirectToRoute('app_products');
+        if (!$product) {
+            return $this->redirectToRoute('app_products');
         }
         return $this->render('product/product.html.twig', [
-           'product' => $product
+            'product' => $product
         ]);
     }
-    
+
     /**
      * @Route("/products", name="app_products")
-    */
+     */
     public function products(): Response
     {
         $products = $this->entityManager->getRepository(Products::class)->findAll();
@@ -43,14 +44,17 @@ class ProductController extends AbstractController
             'products' => $products
         ]);
     }
-    
-    /**
-     * @Route("/add_product", name="app_add_product")
+
+     /**
+     * @Route("/", name="app_home")
      */
-    public function addProduct(): Response
+    public function productsHome(): Response
     {
-        return $this->render('product/add_product.html.twig', [
-           
+        $productsHome = $this->entityManager->getRepository(Products::class)->findBy([], ['id' => 'ASC'], 6);
+        // dd($productsHome);
+        return $this->render('home/index.html.twig', [
+            'productsHome' => $productsHome
         ]);
     }
+
 }

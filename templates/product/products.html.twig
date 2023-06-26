@@ -1,21 +1,32 @@
-{% for product in products %}
-<div class="col-md-4 col-sm-6">
-  <div class="card mb-4 shadow-sm">
-    <a href="{{ path('app_product', { id: product.id }) }}">
-      <img
-        src="{{ asset('assets/img/articles/' ~ product.photo1) }}"
-        alt="{{ product.alt1 }}"
-        class="w-100"
-      />
-    </a>
+{% extends 'base.html.twig' %} {% block title %}Produits{% endblock %} {%block
+body %}
+<div class="container py-3">
+  <div class="row">
+    {% for product in products %}
 
-    <div class="card-body">
-      <h2 class="card-title fs-5">{{ product.name }}</h2>
-      <p class="card-text d-flex flex-column align-items-lg-center">
-        {{ product.description }}
-        <span>{{ product.unitprice }}</span>
-      </p>
+    <div class="col-md-4 col-sm-6">
+      <div class="card mb-4 shadow-sm">
+        <a href="{{ path('app_product', { id: product.id }) }}">
+          <img
+            src="{{ asset('assets/img/articles/' ~ product.photo1) }}"
+            alt="{{ product.alt1 }}"
+            class="w-100"
+          />
+        </a>
+
+        <div class="card-body">
+          <h2 class="card-title fs-5">{{ product.name }}</h2>
+          <p class="card-text d-flex flex-column align-items-lg-center">
+            {{ product.description }}
+            <span>{{ product.unitprice }}</span>
+          </p>
+          <a href="" class="btn" type="submit"></a>
+        </div>
+        
+      </div>
     </div>
+
+    {% endfor %}
   </div>
 </div>
-{% endfor %}
+{% endblock %}

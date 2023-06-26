@@ -1,20 +1,82 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Hello ShoppingCartController!{%
+endblock %} {% block body %}
+<script>
+  // Sélectionnez les éléments HTML
+  const cartItemsElement = document.getElementById("cart-items");
+  const totalQuantityElement = document.getElementById("total-quantity");
+  const totalPriceElement = document.getElementById("total-price");
 
-{% block title %}Hello ShoppingCartController!{% endblock %}
+  // Panier initial
+  let cart = {
+    items: [],
+    totalQuantity: 0,
+    totalPrice: 0,
+  };
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+  // Fonction pour mettre à jour l'affichage du panier
+  function updateCartUI() {
+    // Efface le contenu précédent
+    cartItemsElement.innerHTML = "";
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    // Parcours des éléments du panier
+    cart.items.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = `${item.product.name} - Quantity: ${item.quantity}`;
+      cartItemsElement.appendChild(li);
+    });
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/terrage-14/loron_projet/linas_home_test3/src/Controller/ShoppingCartController.php'|file_link(0) }}">src/Controller/ShoppingCartController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/terrage-14/loron_projet/linas_home_test3/templates/shopping_cart/index.html.twig'|file_link(0) }}">templates/shopping_cart/index.html.twig</a></code></li>
-    </ul>
-</div>
+    // Met à jour la quantité totale et le prix total
+    totalQuantityElement.textContent = cart.totalQuantity;
+    totalPriceElement.textContent = cart.totalPrice;
+  }
+
+  // Fonction pour ajouter un produit au panier
+  function addToCart(product, quantity) {
+    // Vérifie si le produit est déjà dans le panier
+    const existingItem = cart.items.find(
+      (item) => item.product.id === product.id
+    );
+
+    if (existingItem) {
+      // Le produit existe déjà, met à jour la quantité
+      existingItem.quantity += quantity;
+    } else {
+      // Ajoute un nouvel élément au panier
+      cart.items.push({ product, quantity });
+    }
+
+    // Met à jour la quantité totale et le prix total
+    cart.totalQuantity += quantity;
+    cart.totalPrice += product.price * quantity;
+
+    // Met à jour l'affichage du panier
+    updateCartUI();
+  }
+
+  // Fonction pour supprimer un produit du panier
+  function removeFromCart(product) {
+    // Recherche l'index de l'élément dans le panier
+    const itemIndex = cart.items.findIndex(
+      (item) => item.product.id === product.id
+    );
+
+    if (itemIndex !== -1) {
+      const item = cart.items[itemIndex];
+
+      // Met à jour la quantité totale et le prix total
+      cart.totalQuantity -= item.quantity;
+      cart.totalPrice -= item.product.price * item.quantity;
+
+      // Supprime l'élément du panier
+      cart.items.splice(itemIndex, 1);
+
+      // Met à jour l'affichage du panier
+      updateCartUI();
+    }
+  }
+
+  // Exemple d'utilisation
+  const product1 = { id: 1, name: "Product 1", price: 10 };
+  const product2 = { id: 2, name: "Product 2" };
+</script>
 {% endblock %}
