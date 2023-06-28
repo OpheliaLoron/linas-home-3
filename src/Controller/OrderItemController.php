@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LoginController extends AbstractController
+class OrderItemController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/order/item", name="app_order_item")
      */
     public function index(): Response
     {
-        return $this->render('login/index.html.twig', [
-            'controller_name' => 'LoginController',
+        return $this->render('order_item/index.html.twig', [
+            'controller_name' => 'OrderItemController',
         ]);
     }
 }

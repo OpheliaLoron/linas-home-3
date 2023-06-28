@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ShoppingCartsRepository;
+use App\Repository\CartsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ShoppingCartsRepository::class)
+ * @ORM\Entity(repositoryClass=CartsRepository::class)
  */
-class ShoppingCarts
+class Carts
 {
     /**
      * @ORM\Id

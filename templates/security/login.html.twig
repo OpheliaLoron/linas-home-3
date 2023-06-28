@@ -1,42 +1,110 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %} {% block title %}Connexion{% endblock %} {% block
+body %}
 
-{% block title %}Log in!{% endblock %}
+<div class="container">
+  <div class="d-flex row align-items-center justify-content-center">
+    <div class="card p-3 w-75">
+      <figure class="text-center py-3">
+        <a href="{{ path('app_home') }}">
+          <img
+            src="{{ asset('assets/img/logo/linashome_short.svg') }}"
+            alt="logo"
+            class="w-25"
+        /></a>
+      </figure>
+      <div class="d-flex row pt-4">
+        <div class="col-lg-6 border-end">
+          <p class="h3 mb-4 font-weight-normal small pb-3 pt-5">
+            En continuant, vous indiquez que vous acceptez les Conditions
+            d'utilisation et que vous avez pris connaissance de la Politique de
+            confidentialité de Lina's Home.
+          </p>
+          <div>
+            <p class="text-center">
+              <a
+                href="{{ path('app_register') }}"
+                class="link-offset-2 link-underline link-underline-opacity-0 link-body-emphasis link-opacity-50-hover"
+              >
+                Si vous n'avez pas encore de compte, s'inscrire
+              </a>
+            </p>
 
-{% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+            <!-- <div class="pb-3">
+              <div class="border border-1 p-2">
+                <i class="bi bi-google ps-2"></i
+                ><span class="ps-2">Continuer avec Google</span>
+              </div>
+            </div> -->
+            <!-- <div>
+              <div class="border border-1 p-2">
+                <i class="bi bi-facebook ps-2"></i
+                ><span class="ps-2">Continuer avec Facebook</span>
+              </div>
+            </div> -->
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            <!-- -------- -->
+
+            {% if error %}
+            <div class="alert alert-danger">
+              {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+            {% endif %} 
+          </div>
         </div>
-    {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+        <form method="post" class="col-lg-6">
+          <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+          <div class="pb-3">
+            <label for="inputEmail">Email</label>
+            <input
+              type="email"
+              value="{{ last_username }}"
+              name="email"
+              id="inputEmail"
+              class="form-control"
+              autocomplete="email"
+              required
+              autofocus
+            />
+          </div>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+          <div class="pb-3">
+            <label for="inputPassword">Mot de passe</label>
+            <input
+              type="password"
+              name="password"
+              id="inputPassword"
+              class="form-control"
+              autocomplete="current-password"
+              required
+            />
+          </div>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
+          <input
+            type="hidden"
+            name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+          />
 
-        <div class="checkbox mb-3">
+          {# Uncomment this section and add a remember_me option below your
+          firewall to activate remember me functionality. See
+          https://symfony.com/doc/current/security/remember_me.html
+
+          <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> Remember me
+              <input type="checkbox" name="_remember_me" /> Remember me
             </label>
-        </div>
-    #}
+          </div>
+          #}
+          <div class="pb-3">
+            <button class="btn btn-lg btn-outline-primary" type="submit">
+              Se connecter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
 {% endblock %}

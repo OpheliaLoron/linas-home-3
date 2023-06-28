@@ -44,17 +44,4 @@ class ProductController extends AbstractController
             'products' => $products
         ]);
     }
-
-     /**
-     * @Route("/", name="app_home")
-     */
-    public function productsHome(): Response
-    {
-        $productsHome = $this->entityManager->getRepository(Products::class)->findBy([], ['id' => 'ASC'], 6);
-        // dd($productsHome);
-        return $this->render('home/index.html.twig', [
-            'productsHome' => $productsHome
-        ]);
-    }
-
 }

@@ -20,7 +20,12 @@ body %}
             {{ product.description }}
             <span>{{ product.unitprice }}</span>
           </p>
-          <a href="" class="btn" type="submit"></a>
+          <!-- <div class="col-lg-6 col-12 mb-3">
+            <input type="submit" value="get started" class="btn btn-primary rounded-1 col-lg-5 col-11 py-1"
+                name="submit" id="submit">
+          </div> -->
+          <a href="{{ path('add_to_cart', { id: product.id }) }}" class="btn border border-1" type="submit"><i class="bi bi-cart2"></i><span class="ps-2 fst-normal">Ajouter au panier</span></a>
+
         </div>
         
       </div>

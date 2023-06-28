@@ -82,10 +82,12 @@ class Products
      */
     private $alt_4;
 
+   
+
     /**
-     * @ORM\ManyToOne(targetEntity=ShoppingCarts::class)
+     * @ORM\ManyToOne(targetEntity=Carts::class)
      */
-    private $shoppingcart;
+    private $cart;
 
     public function getId(): ?int
     {
@@ -256,6 +258,18 @@ class Products
     public function setShoppingcart(?ShoppingCarts $shoppingcart): self
     {
         $this->shoppingcart = $shoppingcart;
+
+        return $this;
+    }
+
+    public function getCart(): ?Carts
+    {
+        return $this->cart;
+    }
+
+    public function setCart(?Carts $cart): self
+    {
+        $this->cart = $cart;
 
         return $this;
     }

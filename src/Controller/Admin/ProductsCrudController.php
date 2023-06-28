@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Products;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class ProductsCrudController extends AbstractCrudController
 {
@@ -12,14 +13,12 @@ class ProductsCrudController extends AbstractCrudController
         return Products::class;
     }
 
-    /*
-    public function configureFields(string $pageName): iterable
-    {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
-    }
-    */
+    
+    // public function configureFields(string $pageName): iterable
+    // {
+    //     return [
+    //         ImageField::new('photo_1'),
+    //     ];
+    // }
+   
 }

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %} {% block title %}Mon Panier{% endblock %} {%
+block body %}
+<div class="container">
+  <h3 class="mt-4">Mon Panier</h3>
+
+  Retrouvez l'ensemble des produits que vous avez ajouté à votre panier
+
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Produit</th>
+        <th scope="col"></th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set total = null %} {% for product in cart %}
+
+      <tr>
+        <td>
+          <img
+            src="{{ asset('assets/img/articles/{{product.photo1}}') }}"
+            alt="{{ product.product.name }}"
+            class="h-75"
+          />
+          <br />
+        </td>
+        <td>
+          {{ product.product.name }} <br />
+          <small>{{ product.product.description }}</small>
+        </td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.product.unitprice| number_format(2, ',', '.') }}</td>
+        <td>
+          {{ (product.product.unitprice * product.quantity)| number_format(2, ',', '.') }}
+        </td>
+      </tr>
+      {% set total = total + (product.product.unitprice * product.quantity) %}
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="text-center mb-5">
+    <b>Nombre de produits : </b> {{ cart | length }} <br />
+    <b>Total de mon panier : </b> {{ (total)| number_format(2, ',', '.') }}
+    <br />
+    <a href="" class="btn btn-outline-success">Valider mon panier</a>
+  </div>
+</div>
+
+{%endblock %}
