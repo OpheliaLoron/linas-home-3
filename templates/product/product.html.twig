@@ -2,25 +2,24 @@
 body %}
 
 <div class="container">
-  <div class="text-center">
-    <img
-      src="{{ asset('assets/img/articles/' ~ product.photo1) }}"
-      alt="{{ product.alt1 }}"
-      class="img-fluid pt-5 w-75"
-    />
-  </div>
-  <div
-    class="py-3 d-flex w-100 flex-column justify-content-center align-items-center"
-  >
-    <h3>{{ product.name }}</h3>
-    <p>Description : {{ product.description }}</p>
-    <p>Prix : {{ product.unitprice }} €</p>
-    <div>
-      <div>
-        <a href="{{path('add_to_cart, {id : product.id}')}}" class="btn btn-sm btn-outline-primary"
-          >Ajouter un produit</a
-        >
-      </div>
+  <div class="row my-5">
+    <div class="col-md-5">
+      <img
+        src="{{ asset('assets/img/articles/' ~ product.photo1) }}"
+        alt="{{ product.alt1 }}"
+        class="img-fluid"
+      />
+    </div>
+    <div class="col-md-7 my-auto">
+      <h3>{{ product.name }}</h3>
+      <span>{{ product.unitprice| number_format(2, ',', '.') }} €</span>
+      <hr />
+      <p>{{ product.description }}</p>
+      <a
+        href="{{ path('add_to_cart', { id: product.id }) }}"
+        class="btn btn-outline-success"
+        >Ajouter au panier</a
+      >
     </div>
   </div>
 </div>

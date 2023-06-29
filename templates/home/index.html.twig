@@ -114,6 +114,13 @@ body %}
             {{ product.description }}
             <span>{{ product.unitprice }}</span>
           </p>
+          <a
+            href="{{ path('add_to_cart', { id: product.id }) }}"
+            class="btn border border-1"
+            type="submit"
+            ><i class="bi bi-cart2"></i
+            ><span class="ps-2 fst-normal">Ajouter au panier</span></a
+          >
         </div>
       </div>
     </div>

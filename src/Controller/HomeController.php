@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Carts;
 use App\Entity\Products;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

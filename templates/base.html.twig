@@ -104,7 +104,7 @@
     </symbol>
   </svg>
 
-  <body class="h-100 w-100">
+  <body class="h-100 w-100 position-relative">
     <header data-bs-theme="light" class="container-fluid bg-light">
       {% if app.request.attributes.get('_route') != 'app_login' %}{% include
       ('navbar.html.twig') %}{%endif %}
@@ -113,7 +113,7 @@
     <main>{% block body %}{% endblock %}</main>
 
     {% if app.request.attributes.get('_route') != 'app_login' %}
-    <footer class="text-white container-fluid">
+    <footer class="text-white container-fluid position-absolute">
       {% include ('footer.html.twig') %}
     </footer>
     {%endif %}

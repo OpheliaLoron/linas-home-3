@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Carts;
 use App\Entity\Products;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,10 +21,11 @@ class ProductController extends AbstractController
     /**
      * @Route("/product/{id}", name="app_product")
      */
-    public function product($id): Response
+    public function show($id): Response
     {
-        // dd($id);
+
         $product = $this->entityManager->getRepository(Products::class)->findOneById($id);
+        // dd($id);
 
         if (!$product) {
             return $this->redirectToRoute('app_products');
