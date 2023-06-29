@@ -16,7 +16,7 @@ class AccountController extends AbstractController
     {
         $user = $this->getUser();
         if ($user) {
-            return $this->render('account/index.html.twig', []);
+            return $this->render('account/account.html.twig', []);
         } else {
             return $this->redirectToRoute('app_login');
         }
@@ -31,7 +31,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/account", name="account")
+     * @Route("/compte", name="account")
      */
     public function account(Security $security): Response
     {

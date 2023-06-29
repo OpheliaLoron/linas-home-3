@@ -113,7 +113,7 @@
     <main>{% block body %}{% endblock %}</main>
 
     {% if app.request.attributes.get('_route') != 'app_login' %}
-    <footer class="text-white container-fluid position-absolute">
+    <footer class="text-white container-fluid position-absolute w-100">
       {% include ('footer.html.twig') %}
     </footer>
     {%endif %}

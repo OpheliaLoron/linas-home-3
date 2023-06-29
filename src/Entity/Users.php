@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -47,10 +49,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $firstname;
 
-    /**
-     * @ORM\Column(type="string", length=14, nullable=true)
-     */
-    private $phone_number;
+
 
     /**
      * @ORM\Column(type="string", length=25)
@@ -58,24 +57,14 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     private $pseudo;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\OneToMany(targetEntity=Adresses::class, mappedBy="user")
      */
-    private $adress;
+    private $adresses;
 
-    /**
-     * @ORM\Column(type="string", length=14, nullable=true)
-     */
-    private $zipcode;
-
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $city;
-
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $country;
+    public function __construct()
+    {
+        $this->adresses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -190,18 +179,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoneNumber(): ?string
-    {
-        return $this->phone_number;
-    }
-
-    public function setPhoneNumber(string $phone_number): self
-    {
-        $this->phone_number = $phone_number;
-
-        return $this;
-    }
-
     public function getPseudo(): ?string
     {
         return $this->pseudo;
@@ -214,50 +191,32 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAdress(): ?string
+    /**
+     * @return Collection<int, Adresses>
+     */
+    public function getAdresses(): Collection
     {
-        return $this->adress;
+        return $this->adresses;
     }
 
-    public function setAdress(?string $adress): self
+    public function addAdress(Adresses $adress): self
     {
-        $this->adress = $adress;
+        if (!$this->adresses->contains($adress)) {
+            $this->adresses[] = $adress;
+            $adress->setUser($this);
+        }
 
         return $this;
     }
 
-    public function getZipcode(): ?string
+    public function removeAdress(Adresses $adress): self
     {
-        return $this->zipcode;
-    }
-
-    public function setZipcode(?string $zipcode): self
-    {
-        $this->zipcode = $zipcode;
-
-        return $this;
-    }
-
-    public function getCity(): ?string
-    {
-        return $this->city;
-    }
-
-    public function setCity(?string $city): self
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(?string $country): self
-    {
-        $this->country = $country;
+        if ($this->adresses->removeElement($adress)) {
+            // set the owning side to null (unless already changed)
+            if ($adress->getUser() === $this) {
+                $adress->setUser(null);
+            }
+        }
 
         return $this;
     }

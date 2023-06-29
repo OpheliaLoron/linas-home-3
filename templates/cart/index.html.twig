@@ -3,8 +3,8 @@ block body %}
 <div class="container">
   <h3 class="mt-4">Mon Panier</h3>
 
-  Retrouvez l'ensemble des produits que vous avez ajouté à votre panier
-
+  Retrouvez l'ensemble des produits que vous avez ajouté à votre panier {% if
+  cart| length > 0 %}
   <table class="table mt-3">
     <thead>
       <tr>
@@ -31,7 +31,22 @@ block body %}
           {{ product.product.name }} <br />
           <small>{{ product.product.description }}</small>
         </td>
-        <td>{{ product.quantity }}</td>
+        <td>
+          <a href="{{ path('decrease_to_cart', { id: product.product.id }) }}">
+            <img
+              src="{{ asset('assets/img/flaticons/moins-grand-symbole.png') }}"
+              height="12px"
+              alt="Retirer un produit"
+          /></a>
+          {{ product.quantity }}
+          <a href="{{ path('add_to_cart', { id: product.product.id }) }}"
+            ><img
+              src="{{ asset('assets/img/flaticons/plus.png') }}"
+              height="12px"
+              alt="Ajouter un produit"
+          /></a>
+        </td>
+
         <td>{{ product.product.unitprice| number_format(2, ',', '.') }}</td>
         <td>
           {{ (product.product.unitprice * product.quantity)| number_format(2, ',', '.') }}
@@ -41,7 +56,7 @@ block body %}
           %}
         </td>
         <td>
-          <a href="{{path ('delete_to_cart', {'id' : product.product.id})}}">
+          <a href="{{ path('delete_to_cart', { id: product.product.id }) }}">
             <img
               src="{{ asset('assets/img/flaticons/poubelle.png') }}"
               height="18px"
@@ -60,5 +75,7 @@ block body %}
     <a href="" class="btn btn-outline-success mt-3">Valider mon panier</a>
   </div>
 </div>
-
-{%endblock %}
+{% else %}
+<hr />
+<p><b>Votre panier est vide</b></p>
+{% endif %} {%endblock %}
