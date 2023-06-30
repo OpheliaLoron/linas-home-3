@@ -1,11 +1,13 @@
-{%block header %}
-
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="{{ path('app_home') }}"
-      >La Boutique Française</a
-    >
-    <button
+      ><img
+        src="{{ asset('assets/img/logo/linashome_short.svg') }}"
+        alt="Logo"
+        width="150px"
+      />
+    </a>
+    <!-- <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -15,17 +17,9 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="{{ path('app_home') }}"
-            >Home</a
-          >
-        </li>
+    </button> -->
+    <div class="collapse navbar-collapse ms-4" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0 fs-5">
         <li class="nav-item">
           <a
             class="nav-link active"
@@ -34,46 +28,68 @@
             >Nos produits</a
           >
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a
             class="nav-link active"
             aria-current="page"
             href="{{ path('app_home') }}"
             >Qui sommes-nous</a
           >
-        </li>
+        </li> -->
         <li class="nav-item">
           <a
             class="nav-link active"
             aria-current="page"
-            href="{{ path('app_home') }}"
+            href="{{ path('app_contact') }}"
             >Contact</a
           >
         </li>
-        {#
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        #} {#
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-        #}
       </ul>
-      <div class="navbar-item-custom">
+      <div class="navbar-item-custom fs-5">
         {% if app.user %}
-        <a href="{{ path('app_account') }}"
+        <a href="{{ path('app_account') }}" class="bi bi-person me-3"
           >Mon compte <small>{{ app.user.firstname }}</small></a
         >
-        |
-        <a href="{{ path('app_logout') }}">Déconnexion</a>
+        
+        <a
+          href="{{ path('app_logout') }}"
+          class="text-dark link-offset-2 link-underline link-underline-opacity-0"
+          >Déconnexion</a
+        >
         {% else %}
-        <a href="{{ path('app_login') }}">Connexion</a>
-        |
-        <a href="{{ path('app_register') }}">Inscription</a>
+        <a
+          href="{{ path('app_login') }}"
+          class="text-dark link-offset-2 link-underline link-underline-opacity-0 me-3"
+          >Connexion</a
+        >
+        
+        <a
+          href="{{ path('app_register') }}"
+          class="text-dark link-offset-2 link-underline link-underline-opacity-0"
+          >Inscription</a
+        >
         {% endif %}
       </div>
+
+      <div class="ms-5">
+        <a
+          href="{{ path('app_cart') }}"
+          class="nav-link text-dark d-flex d-block"
+          ><i class="bi bi-cart2 fs-3 me-2"></i
+        ></a>
+      </div>
+
       {#
+      <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Votre recherche"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Recherche</button>
+      </form>
+      #} {#
       <form class="d-flex" role="search">
         <input
           class="form-control me-2"
@@ -87,7 +103,7 @@
     </div>
   </div>
 </nav>
-{% endblock %}
+
 <!-- ------------------------------ -->
 
 <!-- <nav class="navbar container">
@@ -145,7 +161,9 @@
   </div>
 </nav> -->
 
-<nav class="nav flex-column container">
+<!-- LOGO -->
+
+<!-- <nav class="nav flex-column container">
   <div class="d-flex justify-content-between">
     <div class="col-lg-3 pt-2">
       <a href="{{ path('app_home') }}">
@@ -154,9 +172,11 @@
           src="{{ asset('assets/img/logo/linashome_short.svg') }}"
         />
       </a>
-    </div>
+    </div> -->
 
-    <!-- <div class="col-lg-5">
+<!-- Fin Logo -->
+
+<!-- <div class="col-lg-5">
       
       <a href="#" class="nav-link text-dark mt-3"
         ><i class="bi bi-search position-absolute fs-4"></i>
@@ -170,14 +190,14 @@
       ></a>
     </div> -->
 
-    <ul class="col-lg-4 nav-links d-flex justify-content-between pt-4">
-      <!-- <li>
+<!-- <ul class="col-lg-4 nav-links d-flex justify-content-between pt-4"> -->
+<!-- <li>
         <a href="{{ path('app_wishlist') }}" class="nav-link text-dark d-flex "
           ><i class="bi bi-heart fs-4 me-2"></i
           ><span class="text-nowrap">Liste d'envie</span></a
         >
       </li> -->
-      <li>
+<!-- <li>
         <a href="{{ path('app_account') }}" class="nav-link text-dark d-flex"
           ><i class="bi bi-person fs-2 me-2"></i><span>Compte</span></a
         >
@@ -187,12 +207,12 @@
           ><i class="bi bi-cart2 fs-3 me-2"></i><span>Panier</span></a
         >
       </li>
-    </ul>
-  </div>
+    </ul> -->
+<!-- </div> -->
 
-  <ul class="nav-more d-flex ps-0 fs-5">
-    <!-- <li class="active"><a href="#" class="nav-link text-dark">Pièces</a></li> -->
-    <li>
+<!-- <ul class="nav-more d-flex ps-0 fs-5"> -->
+<!-- <li class="active"><a href="#" class="nav-link text-dark">Pièces</a></li> -->
+<!-- <li>
       <a href="{{ path('app_products') }}" class="nav-link text-dark ms-5"
         >Produits</a
       >
@@ -201,11 +221,11 @@
       <a href="{{ path('app_contact') }}" class="nav-link text-dark ms-5"
         >Contactez-nous</a
       >
-    </li>
-    <!-- <li>
+    </li> -->
+<!-- <li>
       <a href="{{ path('app_about') }}" class="nav-link text-dark ms-5"
         >À propos</a
       >
     </li> -->
-  </ul>
-</nav>
+<!-- </ul> -->
+<!-- </nav> -->

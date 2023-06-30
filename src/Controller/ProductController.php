@@ -19,7 +19,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/product/{id}", name="app_product")
+     * @Route("/produit/{id}", name="app_product")
      */
     public function show($id): Response
     {
@@ -36,7 +36,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/products", name="app_products")
+     * @Route("/produits", name="app_products")
      */
     public function products(): Response
     {
