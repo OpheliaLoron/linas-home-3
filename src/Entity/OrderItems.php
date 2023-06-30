@@ -17,11 +17,7 @@ class OrderItems
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=OrderPurchases::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $orderpurchase;
+   
 
     /**
      * @ORM\ManyToOne(targetEntity=Products::class)
@@ -39,18 +35,7 @@ class OrderItems
         return $this->id;
     }
 
-    public function getOrderpurchase(): ?OrderPurchases
-    {
-        return $this->orderpurchase;
-    }
-
-    public function setOrderpurchase(?OrderPurchases $orderpurchase): self
-    {
-        $this->orderpurchase = $orderpurchase;
-
-        return $this;
-    }
-
+    
     public function getProduct(): ?Products
     {
         return $this->product;

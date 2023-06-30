@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Classe\Cart;
 use App\Entity\Products;
-use App\Entity\OrderItems;
+
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Monolog\Handler\SyslogUdp\UdpSocket;
