@@ -49,13 +49,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $firstname;
 
-
-
-    /**
-     * @ORM\Column(type="string", length=25)
-     */
-    private $pseudo;
-
     /**
      * @ORM\OneToMany(targetEntity=Adresses::class, mappedBy="user")
      */
@@ -183,18 +176,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstname(string $firstname): self
     {
         $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    public function getPseudo(): ?string
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(string $pseudo): self
-    {
-        $this->pseudo = $pseudo;
 
         return $this;
     }

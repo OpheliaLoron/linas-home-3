@@ -23,7 +23,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/deconnexion", name="app_logout")
      */
     public function logout(): void
     {
@@ -36,10 +36,12 @@ class AccountController extends AbstractController
     public function account(Security $security): Response
     {
         $user = $security->getUser();
-        $roles = $user ? $user->getRole() : [];
+        $roles = $user ? $user->getRoles() : [];
+        dd($roles);
 
         return $this->render('account.html.twig', [
-            'role' => $role,
+            'roles' => $roles,
         ]);
-    }
+        
+    }   
 }

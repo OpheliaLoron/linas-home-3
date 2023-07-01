@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %} {% block title %}Compte{% endblock %} {% block
-body %}
+content %}
 <section class="container">
   <div class="card">
     <h1>Mon compte</h1>
@@ -12,7 +12,7 @@ body %}
     </p>
 
     <ul>
-      <li><a href="">Modifier mon mot de passe</a></li>
+      <li><a href="{{path('app_account_password')}}">Modifier mon mot de passe</a></li>
 
       <li><a href="{{path('app_account_adresses')}}">Gérer mes adresses</a></li>
 
