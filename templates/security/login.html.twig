@@ -8,7 +8,7 @@ block content %}
   </div>
   {% endif %} {% if app.user %}
   <div class="mb-3">
-    Vous êtes connecté en tabt que {{ app.user.userIdentifier }},
+    Vous êtes connecté en tant que {{ app.user.userIdentifier }},
     <a href="{{ path('app_logout') }}">Se déconnecter</a>
   </div>
   {% endif %}

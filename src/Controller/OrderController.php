@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
+use App\Entity\OrderDetails;
 use App\Entity\Orders;
 use App\Form\OrderType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,13 +14,21 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
+
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+
     /**
      * @Route("/commande", name="app_order")
      */
     public function index(Cart $cart, Request $request)
     {
-        if (!$this->getUser()->getAdresses()->getValues())
-        {
+        if (!$this->getUser()->getAdresses()->getValues()) {
             return $this->redirectToRoute('app_account_adress_add');
         }
 
@@ -33,18 +43,18 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/commande/recapitulatif", name="app_order_recap")
+     * @Route("/commande/recapitulatif", name="app_order_recap", methods={"POST"})
      */
     public function add(Cart $cart, Request $request)
     {
-       
+
         $form = $this->createForm(OrderType::class, null, [
             'user' => $this->getUser()
         ]);
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             // dd($form->getData());
             $date = new \Datetime();
             $carriers = $form->get('carriers')->getData();
@@ -52,14 +62,14 @@ class OrderController extends AbstractController
             $delivery_content = $delivery->getFirstname() . ' ' . $delivery->getLastname();
             $delivery_content .= '<br/>' . $delivery->getPhone();
 
-            if ($delivery->getCompany()){
+            if ($delivery->getCompany()) {
                 $delivery_content .= '<br/>' . $delivery->getCompany();
             }
-            
+
             $delivery_content .= '<br/>' . $delivery->getAdress();
             $delivery_content .= '<br/>' . $delivery->getZipcode() . ' ' . $delivery->getCity();
             $delivery_content .= '<br/>' . $delivery->getCountry();
-            dd($delivery_content);
+            // dd($delivery_content);
 
             // Enregitrer ma commadne Order()
             $order = new Orders();
@@ -68,11 +78,30 @@ class OrderController extends AbstractController
             $order->setCarrierName($carriers->getName());
             $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery($delivery_content);
-            $order->isPaid(0);
-        }
+            $order->setIsPaid(0);
 
-        return $this->render('order/add.html.twig', [
-            'cart' => $cart->getFull()
-        ]);
+            $this->entityManager->persist($order);
+
+            // Enregistrer mes produits OrderDetails()
+            foreach ($cart->getFull() as $product) {
+                $orderDetails = new OrderDetails();
+                $orderDetails->setMyOrder($order);
+                $orderDetails->setProduct($product['product']->getName());
+                $orderDetails->setQuantity($product['quantity']);
+                $orderDetails->setPrice($product['product']->getUnitPrice());
+                $orderDetails->setTotal($product['product']->getUnitPrice() * $product['quantity']);
+                $this->entityManager->persist($orderDetails);
+                // dd($product);
+            }
+
+            // $this->entityManager->flush();
+
+            return $this->render('order/add.html.twig', [
+                'cart' => $cart->getFull(),
+                'carrier' => $carriers,
+                'delivery' => $delivery_content
+            ]);
+        }
+        return $this->redirectToRoute('app_cart');
     }
 }
