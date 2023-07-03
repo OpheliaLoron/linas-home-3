@@ -22,6 +22,16 @@ class Categories
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $description;
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +45,18 @@ class Categories
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

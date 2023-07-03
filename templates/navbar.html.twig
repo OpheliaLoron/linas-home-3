@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light">
   <div class="container">
     <a class="navbar-brand" href="{{ path('app_home') }}"
       ><img
@@ -36,21 +36,23 @@
             >Qui sommes-nous</a
           >
         </li> -->
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            href="{{ path('app_contact') }}"
-            >Contact</a
-          >
+        <li>
+          <div class="contact ms-2 mt-2">
+            <button class="border border-0" onclick="afficherInfosContact()">Contact
+            </button>
+            <p id="infosContact" style="display: none" class="fs-5">
+              E-mail : contact@example.com<br />
+              Téléphone : +1 234 567 890
+            </p>
+          </div>
         </li>
       </ul>
       <div class="navbar-item-custom fs-5">
         {% if app.user %}
-        <a href="{{ path('app_account') }}" class="bi bi-person me-3"
+        <a href="{{ path('app_account') }}" class="bi bi-person me-3 text-dark link-underline link-underline-opacity-0"
           >Mon compte <small>{{ app.user.firstname }}</small></a
         >
-        
+
         <a
           href="{{ path('app_logout') }}"
           class="text-dark link-offset-2 link-underline link-underline-opacity-0"
@@ -62,7 +64,7 @@
           class="text-dark link-offset-2 link-underline link-underline-opacity-0 me-3"
           >Connexion</a
         >
-        
+
         <a
           href="{{ path('app_register') }}"
           class="text-dark link-offset-2 link-underline link-underline-opacity-0"

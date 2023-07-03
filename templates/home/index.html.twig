@@ -13,17 +13,17 @@ body %} {% block carousel %}{% endblock %}
       <div class="card mb-4 shadow-sm">
         <a href="{{ path('app_product', { id: product.id }) }}">
           <img
-            src="{{ asset('assets/img/articles/' ~ product.photo1) }}"
-            alt="{{ product.alt1 }}"
+            src="/uploads/{{ product.photo }}"
+            alt="{{ product.alt }}"
             class="w-100"
           />
         </a>
 
         <div class="card-body">
           <h2 class="card-title fs-5">{{ product.name }}</h2>
-          <p class="card-text d-flex flex-column align-items-lg-center">
+          <p class="card-text">
             {{ product.description }}
-            <span>{{ product.unitprice }}</span>
+            <span class="border border-1 rounded-2 px-2 py-1 prix">{{ (product.price) /100 }} €</span>
           </p>
           <a
             href="{{ path('add_to_cart', { id: product.id }) }}"

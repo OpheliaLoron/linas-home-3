@@ -5,14 +5,14 @@ content %}
   <div class="row my-5">
     <div class="col-md-5">
       <img
-        src="{{ asset('assets/img/articles/' ~ product.photo1) }}"
-        alt="{{ product.alt1 }}"
+        src="/uploads/{{ product.photo }}"
+        alt="{{ product.alt }}"
         class="img-fluid"
       />
     </div>
     <div class="col-md-7 my-auto">
       <h3>{{ product.name }}</h3>
-      <span>{{ product.unitprice| number_format(2, ',', '.') }} €</span>
+      <span>{{ (product.price /100)| number_format(2, ',', '.') }} €</span>
       <hr />
       <p>{{ product.description }}</p>
       <a

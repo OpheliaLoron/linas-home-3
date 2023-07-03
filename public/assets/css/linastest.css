@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Belleza&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 *, ::before, ::after, ul {
     box-sizing: border-box;
     margin: 0;
@@ -10,7 +13,20 @@ img{
     max-width: 100%;
 }
 
+body{
+    font-family: 'Lato', sans-serif !important;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Belleza', sans-serif !important;
+}
+
+
 /* NAVBAR */
+.navbar, .contact button {
+    background-color: #F6F4F0;
+}
+
 .logo{
     width: 50%;
 }
@@ -50,6 +66,20 @@ img{
     background-image: url(../img/articles/salon-colore.jpg);
     background-size: cover;   
 } */
+.green{
+background-color: #ACC493;
+}
+
+.prix{
+    position: absolute;
+    left: 16px; 
+    top: 16px;
+    background-color: rgb(255, 255, 255);
+}
+
+.paint {
+    background-color: #acc493cd;
+}
 
 .form-check {
     background-color: #f4f8ff;
@@ -76,7 +106,9 @@ margin-top: 22px;
 /* FOOTER */
 
 footer{
-    background-color: #92735F;
+  
+    background-color: #D7CBBB;
+    /* height: 80px; */
 }
 
 /* footer img{

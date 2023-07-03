@@ -16,7 +16,7 @@ endblock %} {% block content %}
       <div class="form-check">
         {{ carrier.name }} <br />
         {{ carrier.description }} <br />
-        {{carrier.price | number_format(2, ',', '.')}} €
+        {{ carrier.price| number_format(2, ',', '.')}} €
       </div>
     </div>
 
@@ -29,8 +29,8 @@ endblock %} {% block content %}
         <div class="row {% if key > 0 %}mt-2{% endif %}">
           <div class="col-2">
             <img
-              src="{{ asset('assets/img/articles/{{product.photo1}}') }}"
-              alt="{{ product.product.name }}"
+              src="/uploads/{{ product.product.photo }}"
+              alt="{{ product.product.alt }}"
               class="h-75"
             />
           </div>
@@ -43,11 +43,11 @@ endblock %} {% block content %}
             </small>
           </div>
           <div class="col-2 my-auto">
-            {{ (product.product.unitprice * product.quantity)| number_format(2, ',', '.')}}
+            {{ ((product.product.price /100) * product.quantity)| number_format(2, ',', '.')}}
             €
           </div>
         </div>
-        {% set total = total + (product.product.unitprice * product.quantity) %}
+        {% set total = total + ((product.product.price /100) * product.quantity) %}
         {% endfor %}
       </div>
 

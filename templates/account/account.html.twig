@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}Compte{% endblock %} {% block
 content %}
-<section class="container">
+<section class="container h-75">
   <div class="card">
     <h1>Mon compte</h1>
     <p>
@@ -21,7 +21,7 @@ content %}
 
     {% if 'ROLE_ADMIN' in app.user.roles %}
     <a href="{{ path('app_admin') }}" class="btn btn-primary"
-      >Aller à l'administration</a
+      >Vous êtes administrateur, aller au backoffice ?</a
     >
     {% endif %} {% if app.user %}
     <div class="mt-3 text-center">
