@@ -66,9 +66,9 @@ h1, h2, h3, h4, h5 {
     background-image: url(../img/articles/salon-colore.jpg);
     background-size: cover;   
 } */
-.green{
+/* .green{
 background-color: #ACC493;
-}
+} */
 
 .prix{
     position: absolute;
@@ -77,8 +77,24 @@ background-color: #ACC493;
     background-color: rgb(255, 255, 255);
 }
 
+.ajout:hover{
+    background-color: #acc493cd;
+}
+
+.show:hover{
+    background-color: #92735F;
+    color: white;
+}
+
+/* 
 .paint {
     background-color: #acc493cd;
+} */
+
+.brdr{
+    border-right: solid 1px;
+    color: rgb(181, 180, 180);
+
 }
 
 .form-check {

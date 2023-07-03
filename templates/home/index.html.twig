@@ -23,14 +23,15 @@ body %} {% block carousel %}{% endblock %}
           <h2 class="card-title fs-5">{{ product.name }}</h2>
           <p class="card-text">
             {{ product.description }}
-            <span class="border border-1 rounded-2 px-2 py-1 prix">{{ (product.price) /100 }} €</span>
+            <span class="border border-1 rounded-2 px-2 py-1 prix"
+              >{{ product.price / 100 }} €</span
+            >
           </p>
           <a
             href="{{ path('add_to_cart', { id: product.id }) }}"
-            class="btn border border-1"
+            class="btn border border-1 ajout fst-normal"
             type="submit"
-            ><i class="bi bi-cart2"></i
-            ><span class="ps-2 fst-normal">Ajouter au panier</span></a
+            ><i class="bi bi-cart2 pe-2"></i>Ajouter au panier</a
           >
         </div>
       </div>
@@ -45,7 +46,7 @@ body %} {% block carousel %}{% endblock %}
     <p class="lead mb-5">
       <a
         href="{{ path('app_products') }}"
-        class="btn border border-1 rounded-2 py-2 px-5"
+        class="btn border border-1 rounded-2 py-2 px-5 show"
         >Voir plus</a
       >
     </p>
