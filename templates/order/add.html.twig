@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}Paiement de ma commande{%
 endblock %} {% block content %}
-<div class="container">
+<div class="container hauteur-commande mb-5">
   <h2>Mon récapitulatif</h2>
   <p>Vérifiez vos informations avant de payer votre commande</p>
   <hr />
@@ -47,8 +47,8 @@ endblock %} {% block content %}
             €
           </div>
         </div>
-        {% set total = total + ((product.product.price /100) * product.quantity) %}
-        {% endfor %}
+        {% set total = total + ((product.product.price /100) * product.quantity)
+        %} {% endfor %}
       </div>
 
       <!-- {{dump(carrier)}} -->
@@ -59,10 +59,14 @@ endblock %} {% block content %}
       <strong>Livraison : </strong>
       {{ (carrier.price)| number_format(2, ',', '.') }} €
       <hr />
-      <strong>Total : </strong>
-      {{ (total + carrier.price)| number_format(2, ',', '.') }} €
+      <div class="total">
+        <strong>Total : </strong>
+        {{ (total + carrier.price)| number_format(2, ',', '.') }} €
+      </div>
 
-      <a href="" class="btn btn-success btn-block mt-3">Payer | {{ (total + carrier.price)| number_format(2, ',', '.') }} €</a>
+      <a href="" class="btn btn-success btn-block mt-3 payer"
+        >Payer | {{ (total + carrier.price)| number_format(2, ',', '.') }} €</a
+      >
     </div>
   </div>
 </div>

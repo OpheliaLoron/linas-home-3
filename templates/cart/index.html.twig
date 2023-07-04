@@ -32,7 +32,7 @@ block content %}
         
         <td class="text-center">
           <span>{{ product.product.name }}</span> <br />
-          <small>{{ product.product.description }}</small>
+          <small class="voir">{{ product.product.description }}</small>
         </td>
         
         <td class="ps-4">
@@ -51,8 +51,8 @@ block content %}
           /></a>
         </td>
 
-        <td>{{ (product.product.price / 100)| number_format(2, ',', '.') }} €</td>
-        <td>
+        <td class="petit">{{ (product.product.price / 100)| number_format(2, ',', '.') }} €</td>
+        <td class="petit">
           {{ ((product.product.price / 100) * product.quantity)| number_format(2, ',', '.') }} €
         </td>
         <td>

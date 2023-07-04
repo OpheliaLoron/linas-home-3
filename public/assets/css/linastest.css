@@ -34,6 +34,10 @@ h5 {
   background-color: #f6f4f0;
 }
 
+#offcanvasNavbar {
+  background-color: #f6f4f0;
+}
+
 .logo {
   width: 50%;
 }
@@ -63,8 +67,12 @@ margin: 0 25px;
 
 /* MAIN */
 
-.hauteur{
-    height: 64%;
+.hauteur {
+  height: 64%;
+}
+
+#myCarousel{
+    margin-bottom: 300px;
 }
 
 .btn-group button {
@@ -128,7 +136,7 @@ background-color: #ACC493;
   margin-top: 100px;
 }
 .light {
-  background-color: #D7CBBB;
+  background-color: #d7cbbb;
 }
 
 .dimension {
@@ -138,6 +146,13 @@ background-color: #ACC493;
   /* padding-right: 40px; */
 }
 
+.total {
+  margin-right: 30px;
+}
+
+.payer {
+  margin-left: 200px;
+}
 /* FIN MAIN */
 
 /* FOOTER */
@@ -153,16 +168,78 @@ width: 20%;
 
 /* FIN FOOTER */
 
+@media screen and (max-width: 767px) {
+  /* Accueil */
+  .voir {
+    display: none;
+  }
 
-@media screen and (max-width:768px) {
+  .hauteur-commande {
+    margin-top: 100px;
+  }
 
-    /* Accueil */
-    .none{
-        display: none;
-    }
+  .commande {
+    flex-direction: column-reverse;
+  }
 
-    .burger {
-        display: block;
-    }
+  .burger {
+    display: block;
+  }
+
+  .paint {
+    margin-top: 100px;
+  }
+
+  .petit {
+    font-size: small;
+  }
+
+  .register {
+    position: absolute;
+    font-size: 14px !important;
+    top: 303px;
+  }
+
+  .valider {
+    margin-left: 75px;
+  }
+
+  .payer {
+    margin-bottom: 20px;
+    margin-left: 100px;
+  }
+
+  .pied {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  #myCarousel {
+    margin-bottom: -300px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Accueil */
+  .voir {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .pied {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .dimension-pied {
+    width: 50px !important;
+  }
+
+  #myCarousel {
+    margin-bottom: -300px;
+  }
 
 }
