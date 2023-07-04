@@ -48,6 +48,9 @@ h5 {
   margin-right: 40px;
 }
 
+/* .burger {
+    display: none;
+} */
 /* i.bi-person {
 margin-bottom: 80px;
 } */
@@ -151,3 +154,15 @@ width: 20%;
 /* FIN FOOTER */
 
 
+@media screen and (max-width:768px) {
+
+    /* Accueil */
+    .none{
+        display: none;
+    }
+
+    .burger {
+        display: block;
+    }
+
+}
