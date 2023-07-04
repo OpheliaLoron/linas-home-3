@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %} {% block title %}Mon Panier{% endblock %} {%
 block content %}
-<div class="container">
+<div class="container h-75">
   <div class="paint">
-    <h3 class="mt-4">Mon Panier</h3>
+    <h3 class="mt-5">Mon Panier</h3>
 
     Retrouvez l'ensemble des produits que vous avez ajouté à votre panier
   </div>
   {% if cart| length > 0 %}
-  <table class="table mt-3">
+  <table class="table mt-4">
     <thead>
       <tr>
         <th scope="col">Produit</th>
@@ -21,19 +21,21 @@ block content %}
       {% set total = null %} {% for product in cart %}
 
       <tr>
-        <td>
+        <td class="dimension">
           <img
-            src="{{ asset('assets/img/articles/{{product.photo1}}') }}"
+            src="/uploads/{{ product.product.photo }}"
             alt="{{ product.product.name }}"
-            class="h-75"
+            class=""
           />
           <br />
         </td>
-        <td>
-          {{ product.product.name }} <br />
+        
+        <td class="text-center">
+          <span>{{ product.product.name }}</span> <br />
           <small>{{ product.product.description }}</small>
         </td>
-        <td>
+        
+        <td class="ps-4">
           <a href="{{ path('decrease_to_cart', { id: product.product.id }) }}">
             <img
               src="{{ asset('assets/img/flaticons/moins-grand-symbole.png') }}"
@@ -49,9 +51,9 @@ block content %}
           /></a>
         </td>
 
-        <td>{{ (product.product.price / 100)| number_format(2, ',', '.') }}</td>
+        <td>{{ (product.product.price / 100)| number_format(2, ',', '.') }} €</td>
         <td>
-          {{ ((product.product.price / 100) * product.quantity)| number_format(2, ',', '.') }}
+          {{ ((product.product.price / 100) * product.quantity)| number_format(2, ',', '.') }} €
         </td>
         <td>
           {% set total = total + ((product.product.price / 100) *
@@ -70,18 +72,26 @@ block content %}
       {% endfor %}
     </tbody>
   </table>
-  <div class="text-center mb-5">
-    <b>Nombre de produits : </b> {{ cart | length }} <br />
-    <b>Total de mon panier : </b> {{ (total)| number_format(2, ',', '.') }}
-    <br />
+  <div class="text-end mb-4">
+    <b>Nombre de références : </b> {{ cart | length }} <br />
+    <b>Total de mon panier : </b> {{ (total)| number_format(2, ',', '.') }} €
+  </div>
+  <div class="text-center">
     <a href="{{ path('app_order') }}" class="btn btn-outline-success mt-3"
       >Valider mon panier</a
     >
   </div>
+
+  {% else %}
+
+  <p class="my-5"><b>Votre panier est vide</b></p>
+  {% endif %}
+  <div class="text-center my-3">
+    <a
+      href="{{ path('app_products') }}"
+      class="link-underline link-underline-opacity-0 link-body-emphasis link-opacity-75-hover"
+      >Continuer mes achats</a
+    >
+  </div>
 </div>
-{% else %}
-<hr />
-<p><b>Votre panier est vide</b></p>
-{% endif %} 
-<a href="{{ path('app_products')}}">Continuer mes achats</a>
 {%endblock %}

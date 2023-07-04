@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %} {% block title %}Se connecter{% endblock %} {%
 block content %}
-<div class="h-75">
+<div class=" hauteur my-auto">
   <form method="post" class="d-flex row">
     <div class="col-md-5">
       {% if error %}
@@ -48,25 +48,29 @@ block content %}
   activate remember me functionality. See
   https://symfony.com/doc/current/security/remember_me.html -->
 
-      <div class="checkbox mb-3 mt-2">
+      <!-- <div class="checkbox mb-3 mt-2">
         <label>
           <input type="checkbox" name="_remember_me" /> Se souvenir de moi
         </label>
-      </div>
+      </div> -->
 
-      <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">
+      <button class="btn btn-lg btn-outline-primary mt-4" type="submit">
         Se connecter
       </button>
     </div>
+
     <div class="col-md-1 brdr text-start"></div>
 
     <div class="col-md-6 text-center">
-      <h1 class="h3 mb-5">Je n'ai pas de compte</h1>
-      <a
-        href="{{ path('app_register') }}"
-        class="fs-5 text-dark link-underline link-underline-opacity-0"
-        >Je clique ici pour m'inscrire !</a
-      >
+      <h1 class="h3">Je n'ai pas de compte</h1>
+      <div class="compte">
+        <a
+          href="{{ path('app_register') }}"
+          class="fs-5 link-underline link-underline-opacity-0 link-body-emphasis link-opacity-75-hover"
+        >
+          Je clique ici pour m'inscrire !
+        </a>
+      </div>
     </div>
   </form>
 </div>

@@ -68,6 +68,7 @@ class RegistrationFormType extends AbstractType
                         'placeholder' => 'Merci de confirmer votre mot de passe'
                     ]
                 ],
+               
                 // new Length([
                 //     'min' => 6,
                 //     'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} characters',
@@ -87,6 +88,10 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
+                'attr' => [
+                    'class' => 'btn-outline-primary my-3'
+                ]
+
             ]);
     }
 

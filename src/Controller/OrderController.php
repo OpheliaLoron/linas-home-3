@@ -74,7 +74,7 @@ class OrderController extends AbstractController
             $delivery_content .= '<br/>' . $delivery->getCountry();
             // dd($delivery_content);
 
-            // Enregitrer ma commadne Order()
+            // Enregitrer ma commande Order()
             $order = new Orders();
             $order->setUSer($this->getUser());
             $order->setCreatedAt($date);
