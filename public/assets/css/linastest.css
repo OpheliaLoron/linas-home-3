@@ -52,9 +52,13 @@ h5 {
   margin-right: 40px;
 }
 
-/* .burger {
-    display: none;
-} */
+.burger {
+  display: none;
+}
+
+.voir {
+  display: block;
+}
 /* i.bi-person {
 margin-bottom: 80px;
 } */
@@ -71,9 +75,9 @@ margin: 0 25px;
   height: 64%;
 }
 
-#myCarousel{
+/* #myCarousel{
     margin-bottom: 300px;
-}
+} */
 
 .btn-group button {
   background-color: #92735f;
@@ -174,16 +178,21 @@ width: 20%;
     display: none;
   }
 
+  .burger {
+    display: block;
+  }
+
+  #myCarousel {
+    margin-bottom: 70px;
+    margin-top: 100px;
+  }
+
   .hauteur-commande {
     margin-top: 100px;
   }
 
   .commande {
     flex-direction: column-reverse;
-  }
-
-  .burger {
-    display: block;
   }
 
   .paint {
@@ -209,17 +218,14 @@ width: 20%;
     margin-left: 100px;
   }
 
+  /* Footer */
   .pied {
     text-align: center;
     margin-top: 10px;
   }
-
-  #myCarousel {
-    margin-bottom: -300px;
-  }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
   /* Accueil */
   .voir {
     display: none;
@@ -229,17 +235,18 @@ width: 20%;
     display: block;
   }
 
+  /* Footer */
   .pied {
     text-align: center;
     margin-top: 10px;
   }
 
   .dimension-pied {
-    width: 50px !important;
+    /* width: 50px !important; */
+    width: 25% !important;
   }
 
-  #myCarousel {
-    margin-bottom: -300px;
-  }
-
+  /* #myCarousel {
+    margin-bottom: 70px;
+  } */
 }

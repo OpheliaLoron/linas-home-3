@@ -1,55 +1,55 @@
 {% extends 'base.html.twig' %} {% block title %}Lina's Home{% endblock%} {%block
-body %} {% block carousel %}{% endblock %}
-
-<div class="container py-3 home">
-  <!-- 576px XS - > 576px S > 768px M > 992px L > 1200px XL -->
-
-  {%block content %}
-
-  <div class="row">
-    {% for product in productsHome %}
-
-    <div class="col-md-4 col-sm-6">
-      <div class="card mb-4 shadow-sm">
-        <a href="{{ path('app_product', { id: product.id }) }}">
-          <img
-            src="/uploads/{{ product.photo }}"
-            alt="{{ product.alt }}"
-            class="w-100"
-          />
-        </a>
-
-        <div class="card-body">
-          <h2 class="card-title fs-5">{{ product.name }}</h2>
-          <p class="card-text">
-            {{ product.description }}
-            <span class="border border-1 rounded-2 px-2 py-1 prix"
-              >{{ product.price / 100 }} €</span
+  body %} {% block carousel %}{% endblock %}
+  
+  <div class="container py-3 home">
+    <!-- 576px XS - > 576px S > 768px M > 992px L > 1200px XL -->
+  
+    {%block content %}
+  
+    <div class="row">
+      {% for product in productsHome %}
+  
+      <div class="col-md-4 col-sm-6">
+        <div class="card mb-4 shadow-sm">
+          <a href="{{ path('app_product', { id: product.id }) }}">
+            <img
+              src="/uploads/{{ product.photo }}"
+              alt="{{ product.alt }}"
+              class="w-100"
+            />
+          </a>
+  
+          <div class="card-body">
+            <h2 class="card-title fs-5">{{ product.name }}</h2>
+            <p class="card-text">
+              {{ product.description }}
+              <span class="border border-1 rounded-2 px-2 py-1 prix"
+                >{{ product.price / 100 }} €</span
+              >
+            </p>
+            <a
+              href="{{ path('add_to_cart', { id: product.id }) }}"
+              class="btn border border-1 ajout fst-normal"
+              type="submit"
+              ><i class="bi bi-cart2 pe-2"></i>Ajouter au panier</a
             >
-          </p>
-          <a
-            href="{{ path('add_to_cart', { id: product.id }) }}"
-            class="btn border border-1 ajout fst-normal"
-            type="submit"
-            ><i class="bi bi-cart2 pe-2"></i>Ajouter au panier</a
-          >
+          </div>
         </div>
       </div>
+  
+      {% endfor %}
     </div>
-
-    {% endfor %}
+  
+    <div
+      class="d-flex flex-column justify-content-center align-items-center py-4"
+    >
+      <p class="lead mb-5">
+        <a
+          href="{{ path('app_products') }}"
+          class="btn border border-1 rounded-2 py-2 px-5 show"
+          >Voir plus</a
+        >
+      </p>
+    </div>
   </div>
-
-  <div
-    class="d-flex flex-column justify-content-center align-items-center py-4"
-  >
-    <p class="lead mb-5">
-      <a
-        href="{{ path('app_products') }}"
-        class="btn border border-1 rounded-2 py-2 px-5 show"
-        >Voir plus</a
-      >
-    </p>
-  </div>
-</div>
-{% endblock %} {% endblock %}
+  {% endblock %} {% endblock %}
